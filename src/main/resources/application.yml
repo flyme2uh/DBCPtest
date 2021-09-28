@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    username: root
+    password: 1qazxsw2qubit
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.10.10.177:3306/auth_test?characterEncoding=UTF-8&amp;useUnicode=true
+    dynamic:
+      primary: druid
+      datasource:
+        druid:
+          username: ${spring.datasource.username}
+          password: ${spring.datasource.password}
+          url: ${spring.datasource.url}
+          driver-class-name: ${spring.datasource.driver-class-name}
+          type: com.alibaba.druid.pool.DruidDataSource
+        beeCP:
+          username: ${spring.datasource.username}
+          password: ${spring.datasource.password}
+          url: ${spring.datasource.url}
+          driver-class-name: ${spring.datasource.driver-class-name}
+          type: cn.beecp.BeeDataSource
+        hikariCP:
+          username: ${spring.datasource.username}
+          password: ${spring.datasource.password}
+          url: ${spring.datasource.url}
+          driver-class-name: ${spring.datasource.driver-class-name}
+          type: com.zaxxer.hikari.HikariDataSource
+        tomcat:
+          username: ${spring.datasource.username}
+          password: ${spring.datasource.password}
+          url: ${spring.datasource.url}
+          driver-class-name: ${spring.datasource.driver-class-name}
+          type: org.apache.tomcat.jdbc.pool.DataSource
+        dbcp2:
+          username: ${spring.datasource.username}
+          password: ${spring.datasource.password}
+          url: ${spring.datasource.url}
+          driver-class-name: ${spring.datasource.driver-class-name}
+          type: org.apache.commons.dbcp2.BasicDataSource
+  autoconfigure:
+    exclude:  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure # 去除druid自动配置
